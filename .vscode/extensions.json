@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    // Optional yet unified keybindings schema extension
+    // IntelliJ IDEA Keybindings
+    // It allows to use the same tricks from IntelliJ IDEA in VSCode if you used to them as I do
+    "k--kato.intellij-idea-keybindings",
+  ]
+}
