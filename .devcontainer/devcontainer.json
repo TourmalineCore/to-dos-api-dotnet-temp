@@ -14,5 +14,8 @@
         "karatelabs.karate"
       ]
     }
-  }
+  },
+  // this root is needed e.g. in case when you edit files not inly in VSCode in Dev Container but also directly
+  // it might not have enough rights to write to files that are open in another editor with Admin rights
+  "remoteUser": "root"
 }
