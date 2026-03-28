@@ -1,0 +1,5 @@
+{
+  "name": "Dev Container of to-dos-api-dotnet-temp",
+  // The full list of available images can be found here https://hub.docker.com/r/microsoft/devcontainers-dotnet
+  "image": "mcr.microsoft.com/devcontainers/dotnet:10.0-noble"
+}
