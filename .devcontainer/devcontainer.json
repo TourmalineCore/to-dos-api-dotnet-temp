@@ -9,7 +9,11 @@
       // https://github.com/docker/buildx/issues/3654
       // without this version downgrade it doesn't work at GitHub Codespaces
       // should be fixed at 0.33.0
-      "mobyBuildxVersion": "0.30.1"
+      // moby and installDockerBuildx has to set to false as well to overcome this error
+      // It seems packages for moby not available in OS ubuntu noble (amd64). To resolve, either: (1) set feature option '"moby": false' , or (2) choose a compatible OS version (eg: 'ubuntu-24.04')
+      "version": "29.2.1",
+      "moby": "false",
+      "installDockerBuildx": "false"
     }
   },
   "customizations": {
