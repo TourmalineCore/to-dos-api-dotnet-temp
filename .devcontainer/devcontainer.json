@@ -23,7 +23,9 @@
         "karatelabs.karate",
         // Adds .NET related extensions for development
         "ms-dotnettools.csdevkit",
-        "ms-dotnettools.csharp"
+        "ms-dotnettools.csharp",
+        // To allow to execute requests from *.http Rest Client files in VSCode
+        "humao.rest-client"
       ]
     }
   },
