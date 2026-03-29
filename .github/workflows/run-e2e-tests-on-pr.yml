@@ -1,0 +1,15 @@
+name: Run E2E Tests on PR
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  run-e2e-karate-tests-using-docker-compose:
+    runs-on: ubuntu-24.04
+    steps:
+    - uses: actions/checkout@v4
+    - name: Run all dependencies via docker-compose including Karate tests
+      run: |
+        # The option --exit-code-from ensures that the command's exit code exactly matches the exit code of the specified service.
+        docker compose up --build --exit-code-from to-dos-api-dotnet-temp-karate-tests
