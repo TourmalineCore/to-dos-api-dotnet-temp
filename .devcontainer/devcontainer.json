@@ -15,6 +15,12 @@
       ]
     }
   },
+  "remoteEnv": {
+    // the full list of available variables is available here https://containers.dev/implementors/json_reference/#variables-in-devcontainerjson
+    // localWorkspaceFolder contains Host OS absolute path of the repo
+    // LOCAL_WORKSPACE_FOLDER is in use in docker-compose.yml, checks its comments
+    "LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}"
+  },
   // this root is needed e.g. in case when you edit files not inly in VSCode in Dev Container but also directly
   // it might not have enough rights to write to files that are open in another editor with Admin rights
   "remoteUser": "root"
