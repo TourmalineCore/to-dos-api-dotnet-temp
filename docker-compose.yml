@@ -1,0 +1,19 @@
+services:
+  to-dos-api-dotnet-temp-karate-tests:
+    # if you specify container_name it provides a pretty name of the container in Docker Desktop
+    # visually it shows karate-tests sub-container name inside of to-dos-api-dotnet-temp parent container
+    container_name: 'to-dos-api-dotnet-temp-karate-tests'
+    build:
+      dockerfile: ./Dockerfile
+      context: ./e2e
+    # https://docs.docker.com/reference/compose-file/services/#command
+    command: run ./e2e
+    volumes:
+      # this is needed so that we can spin it up from within Dev Container where LOCAL_WORKSPACE_FOLDER is defined and from a simple OS terminal of the repo root
+      # we need only e2e folder to run its Karate tests
+      - ${LOCAL_WORKSPACE_FOLDER:-.}/e2e:/e2e
+    networks:
+      - to-dos-api-dotnet-temp-network
+
+networks:
+  to-dos-api-dotnet-temp-network:
