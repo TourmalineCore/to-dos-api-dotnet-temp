@@ -20,7 +20,10 @@
     "vscode": {
       "extensions": [
         // Adds Karate tests support to VSCode
-        "karatelabs.karate"
+        "karatelabs.karate",
+        // Adds .NET related extensions for development
+        "ms-dotnettools.csdevkit",
+        "ms-dotnettools.csharp"
       ]
     }
   },
