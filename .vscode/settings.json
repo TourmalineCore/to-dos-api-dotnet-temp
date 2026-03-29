@@ -3,5 +3,4 @@
   "editor.insertSpaces": true,
   "editor.formatOnSave": true,
   "files.eol": "\n",
-  "dotnet.defaultSolution": "to-dos-api-dotnet-temp.slnx",
 }
