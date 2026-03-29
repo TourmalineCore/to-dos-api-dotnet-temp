@@ -24,6 +24,13 @@
       ]
     }
   },
+  // To know more about removeEnv vs containerEnv you can go here https://code.visualstudio.com/remote/advancedcontainers/environment-variables
+  // we add variables to containerEnv to be accessible by all services we run within the container
+  // in our case it is Karate tests which need these variables
+  "containerEnv": {
+    "API_ROOT_URL": "http://localhost:4401/api"
+  },
+  // the most important thing regarding remoteEnv env variables is that they are accessible in the Terminal
   "remoteEnv": {
     // the full list of available variables is available here https://containers.dev/implementors/json_reference/#variables-in-devcontainerjson
     // localWorkspaceFolder contains Host OS absolute path of the repo
