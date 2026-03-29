@@ -5,7 +5,12 @@
   },
   "features": {
     // this is needed to be able to call Host OS Docker (DooD)
-    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
+      // https://github.com/docker/buildx/issues/3654
+      // without this version downgrade it doesn't work at GitHub Codespaces
+      // should be fixed at 0.33.0
+      "mobyBuildxVersion": "0.30.1"
+    }
   },
   "customizations": {
     "vscode": {
