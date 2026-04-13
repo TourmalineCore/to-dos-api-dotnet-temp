@@ -1,4 +1,14 @@
 services:
+  to-dos-api-dotnet-temp:
+    container_name: to-dos-api-dotnet-temp
+    build:
+      dockerfile: ./Api/Dockerfile
+      context: .
+    ports:
+      - 6401:80
+    networks:
+      - to-dos-api-dotnet-temp-network
+
   to-dos-api-dotnet-temp-karate-tests:
     # if you specify container_name it provides a pretty name of the container in Docker Desktop
     # visually it shows karate-tests sub-container name inside of to-dos-api-dotnet-temp parent container
@@ -6,12 +16,18 @@ services:
     build:
       dockerfile: ./Dockerfile
       context: ./e2e
+    # service_started is not what we need, we need deps to be healthy and ready, this needs to be implemented in api first 
+    depends_on:
+      to-dos-api-dotnet-temp:
+        condition: service_started
     # https://docs.docker.com/reference/compose-file/services/#command
     command: run ./e2e
     volumes:
       # this is needed so that we can spin it up from within Dev Container where LOCAL_WORKSPACE_FOLDER is defined and from a simple OS terminal of the repo root
       # we need only e2e folder to run its Karate tests
       - ${LOCAL_WORKSPACE_FOLDER:-.}/e2e:/e2e
+    environment:
+      API_ROOT_URL: "http://to-dos-api-dotnet-temp/api"
     networks:
       - to-dos-api-dotnet-temp-network
 

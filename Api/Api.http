@@ -1,0 +1,5 @@
+@apiRootUrl = {{$processEnv API_ROOT_URL}}
+
+GET {{apiRootUrl}}/to-dos
+
+###

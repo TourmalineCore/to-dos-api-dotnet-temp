@@ -20,15 +20,31 @@
     "vscode": {
       "extensions": [
         // Adds Karate tests support to VSCode
-        "karatelabs.karate"
+        "karatelabs.karate",
+        // Adds .NET related extensions for development
+        "ms-dotnettools.csdevkit",
+        "ms-dotnettools.csharp",
+        // To allow to execute requests from *.http Rest Client files in VSCode
+        "humao.rest-client"
       ]
     }
   },
+  // To know more about removeEnv vs containerEnv you can go here https://code.visualstudio.com/remote/advancedcontainers/environment-variables
+  // we add variables to containerEnv to be accessible by all services we run within the container
+  // in our case it is Karate tests which need these variables
+  "containerEnv": {
+    "API_ROOT_URL": "http://localhost:4401/api"
+  },
+  // the most important thing regarding remoteEnv env variables is that they are accessible in the Terminal
   "remoteEnv": {
     // the full list of available variables is available here https://containers.dev/implementors/json_reference/#variables-in-devcontainerjson
     // localWorkspaceFolder contains Host OS absolute path of the repo
     // LOCAL_WORKSPACE_FOLDER is in use in docker-compose.yml, checks its comments
-    "LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}"
+    "LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}",
+    // https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-9.0#default-host-configuration-sources
+    // https://andrewlock.net/8-ways-to-set-the-urls-for-an-aspnetcore-app/
+    // this will override urls in appsettings.MockForDevelopment.json and use different port when run within Dev Container to avoid using the same port
+    "URLS": "http://*:4401"
   },
   // this root is needed e.g. in case when you edit files not inly in VSCode in Dev Container but also directly
   // it might not have enough rights to write to files that are open in another editor with Admin rights
